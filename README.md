@@ -2,6 +2,10 @@
 
 WTF is a file metadata microservice which returns the metadata of the uploaded file in json format.
 
+Visit the application [__HERE__](https://wtfile.herokuapp.com/)
+
+---
+
 ![Screenshot of the application](/public/img/Capture.JPG)
 
 ---
