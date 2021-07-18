@@ -1,0 +1,78 @@
+doctype html
+
+html(lang='en')
+    head
+        meta(charset='UTF-8')
+        meta(name='viewport' content='width=device-width, initial-scale=1.0')
+        meta(http-equiv='X-UA-Compatible' content='IE=edge')
+        meta(name='author' content='AdmiJW')
+        meta(name='description' content='A file metadata microservice')
+        meta(name='keywords' content='microservice, api, express, nodejs')
+
+        title What's This File?
+
+        // Favicon
+        link(rel='icon' href='/public/img/magnifying-glass.svg' type='image/svg')
+        // Font Awesome
+        link(rel='stylesheet' href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous")
+        // Materialize CSS
+        link(rel='stylesheet' href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css")
+        script(src='https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js')
+
+        // CSS
+        link(rel='stylesheet' type='text/css' href='/public/styles/index.css')
+        // Google Font
+        link(rel='preconnect' href='https://fonts.googleapis.com')
+        link(rel='preconnect' href='https://fonts.gstatic.com' crossorigin)
+        link(href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet")
+
+        // JS
+        script(src='/public/script/script.js' defer)
+
+    body
+        // Navigation
+        nav.nav.blue-grey.darken-4.bg-invis
+            div.nav-wrapper
+                a(href='/').brand-logo.nav--logo.left
+                    img.nav--logo__img(src='/public/img/magnifying-glass.svg' alt='magnifying glass logo')
+                    | WTF
+                ul.nav--links.right
+                    li
+                        a(href='https://github.com/AdmiJW/WTF-file-metadata-microservice' target='_blank' rel='noreferrer noopener')
+                            i.fab.fa-github-alt
+                    li
+                        a(href='https://www.freecodecamp.org/admi_jw' target='_blank' rel='noreferrer noopener')
+                            i.fab.fa-free-code-camp
+
+        // Jumbotron
+        div.jumbotron
+            img.jumbotron__img#women-with-glass(src='/public/img/women_with_glass.png' alt='women holding magnifying glass')
+            img.jumbotron__img#men-with-glass(src='/public/img/men_with_glass.png' alt='men holding magnifying glass')
+
+            div.jumbotron__info
+                h1.jumbotron__title 
+                    span W
+                    | hat's 
+                    span T
+                    | he 
+                    span F
+                    | ile? 📁
+                p.jumbotron__text A File Metadata Microservice
+                a.jumbotron__btn.btn.waves-effect.waves-light.orange.darken-2(href='#content') 
+                    | Find Out Now&nbsp&nbsp
+                    i.fas.fa-play
+
+        // Content
+        form(method='POST' action='/api/upfile' enctype='multipart/form-data').content.container#content
+            h4.content__title Upload File
+            input(type='file' name='upfile').content__file#content__file
+            button(type='submit').waves-effect.waves-light.btn.orange.darken-2.content__upload
+                | Upload&nbsp
+                i.fas.fa-paper-plane
+
+        // Footer
+        footer.footer.blue-grey.darken-4.center-align
+            p
+                | 🛠 Created By
+                a.footer__link(href='https://github.com/AdmiJW/WTF-file-metadata-microservice' target='_blank' rel='noopener noreferrer') &nbspAdmiJW
+                | 🛠

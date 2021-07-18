@@ -1,0 +1,201 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-size: 10px;
+    --nav-height: 64px;
+
+    background-color: #ffffff;
+    background-image:  linear-gradient(30deg, #f6f6f6 12%, transparent 12.5%, transparent 87%, #f6f6f6 87.5%, #f6f6f6), linear-gradient(150deg, #f6f6f6 12%, transparent 12.5%, transparent 87%, #f6f6f6 87.5%, #f6f6f6), linear-gradient(30deg, #f6f6f6 12%, transparent 12.5%, transparent 87%, #f6f6f6 87.5%, #f6f6f6), linear-gradient(150deg, #f6f6f6 12%, transparent 12.5%, transparent 87%, #f6f6f6 87.5%, #f6f6f6), linear-gradient(60deg, #f6f6f677 25%, transparent 25.5%, transparent 75%, #f6f6f677 75%, #f6f6f677), linear-gradient(60deg, #f6f6f677 25%, transparent 25.5%, transparent 75%, #f6f6f677 75%, #f6f6f677);
+    background-size: 50px 88px;
+    background-position: 0 0, 0 0, 25px 44px, 25px 44px, 0 0, 25px 44px;
+    background-attachment: fixed;
+
+    scroll-behavior: smooth;
+}
+
+@mixin padding-container {
+    padding-left: unquote('max(20px, calc((100% - 800px) / 2))') !important;
+    padding-right: unquote('max(20px, calc((100% - 800px) / 2))') !important;
+    width: 100%;
+}
+
+@mixin flex($direction: row, $justify: flex-start, $align: flex-start) {
+    display: flex;
+    flex-direction: $direction;
+    justify-content: $justify;
+    align-items: $align;
+}
+
+@keyframes slide-in-out {
+    0%, 50%, 100% {
+        transform: translateX(-100vw);
+        opacity: 0;
+    }
+    12.5%, 37.5% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+//===========================================
+// Navigation
+//===========================================
+.nav {
+    position: fixed;
+    top: 0; left: 0;
+    z-index: 999;
+    @include padding-container;
+    transition: all .5s ease;
+
+    &--logo__img {
+        width: 30px;
+        height: auto;
+        margin: 0 10px 0 0;
+    }
+
+    &--logo {
+        @include flex(row, flex-start, center);
+        font-weight: bolder;
+        
+        small {
+            font-size: .6rem;
+        }
+    }
+}
+
+.nav.bg-invis {
+    background-color: transparent !important;
+    box-shadow: none !important;
+    text-shadow: 0 0 3px #000, 0 0 8px rgba(0,0,0,.3);
+    transform: scale(1.025);
+}
+
+
+//===================================
+// Jumbotron
+//===================================
+.jumbotron {
+    @include padding-container;
+    @include flex(row, center, center);
+    position: relative;
+    min-height: unquote('max(300px, 100vh)');
+
+    background-color: #ffffff;
+    background: repeating-linear-gradient( 45deg, #ffe9d4, #ffe9d4 40px, #ffffff 40px, #ffffff 80px );
+    background-attachment: fixed;
+
+    @media screen and (min-width: 600px) {
+        @include flex(row, flex-end, center);
+    }
+}
+
+.jumbotron__img {
+    position: absolute;
+    height: auto;
+    bottom: 0; left: 0;
+    z-index: 0;
+
+    
+}
+
+#men-with-glass {
+    width: unquote('clamp(300px, 75%, 600px)');
+    animation: 12s ease 6s infinite slide-in-out;
+    animation-fill-mode: backwards;
+
+    @media screen and (min-width: 800px) { left: 4%; }
+}
+#women-with-glass {
+    width: unquote('clamp(300px, 75%, 475px)');
+    animation: 12s ease infinite slide-in-out;
+
+    @media screen and (min-width: 800px) { left: 10%; }
+}
+
+.jumbotron__info {
+    width: unquote('min(400px, 80%)');
+    text-align: right;
+    padding: 1.4em;
+    z-index: 1;
+
+    .jumbotron__text {
+        font-size: 1.25rem;
+        margin: .5em 0;
+    }
+
+    span {
+        font-size: 1.35em;
+        font-weight: 600;
+        color: #d35400;
+    }
+
+    @media screen and (max-width: 600px) {
+        // Glassmorphism
+        background: rgba(255, 255, 255, 0.55);
+        box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+        backdrop-filter: blur( 2px );
+        -webkit-backdrop-filter: blur( 2px );
+        border-radius: 10px;
+        border: 1px solid rgba( 255, 255, 255, 0.18 );
+
+        text-align: center;
+    }
+}
+
+
+//===================================
+// Content (Form Upload Form)
+//===================================
+.content {
+    margin-top: 75px; margin-bottom: 75px;
+    padding: 25px 0;
+    min-height: 300px;
+    @include flex(column, flex-start, center);
+
+    border-radius: 10px;
+    box-shadow: 0 5px 5px #000;
+
+    background-image: url('/public/img/wood_texture.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.content__title {
+    font-size: 3rem;
+    text-align: center;
+    text-shadow: 0 3px 2px #000;
+    padding: 1em 0;
+    color: #fff;
+}
+
+.content__file {
+    font-size: 1.5rem;
+
+    @media screen and (max-width: 600px) {
+        font-size: 1rem;
+    }
+}
+
+.content__upload {
+    margin: 2em 0;
+}
+
+
+
+
+//===================================
+// Footer
+//===================================
+footer {
+    @include flex(row, center, center);
+    box-shadow: 0 -2px 2px 0 rgba(0,0,0,0.14), 0 -3px 1px -2px rgba(0,0,0,0.12), 0 -1px 5px 0 rgba(0,0,0,0.2);
+    min-height: 200px;
+    font-size: 3rem;
+    color: #fff;
+
+    a { color: rgb(15, 15, 235); }
+}
