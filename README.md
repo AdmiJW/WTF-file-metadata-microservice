@@ -13,3 +13,10 @@ Visit the application [__HERE__](https://wtfile.herokuapp.com/)
 ## Usage
 
 Simply clone the repository, create an `.env` file in uppermost directory and set `PORT` environment variable if you want to (Defaults to 3000). Then, run `npm install` and `npm start`
+
+## Environment Variables
+
+| Environment Variable | Description |
+|-|-|
+| `NODE_ENV` | `production` or `development` |
+| `PORT` | Port to run express application on. Default is `3000` |

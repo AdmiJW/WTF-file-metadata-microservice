@@ -1,6 +1,7 @@
 const express = require('express');
 const multer = require('multer');
 const rateLimiter = require('express-rate-limit');
+const helmet = require('helmet');
 
 
 require('dotenv').config();
@@ -69,7 +70,20 @@ if (!process.env.DISABLE_XORIGIN) {
 }
 
 
+// HelmetJS for header security
+app.use(helmet({
+    contentSecurityPolicy: {
+        useDefaults: true,
+        directives: {
+            scriptSrc: ["'self'", 'cdnjs.cloudflare.com'],
+        }
+    }
+}));
 
+
+//=============================
+// Rate Limiting
+//=============================
 const viewRateLimiter = rateLimiter({
     windowMs: 5 * 60 * 1000,                         // 5 minute window
     max: 100                                         // ~1 request per 3 second
@@ -119,4 +133,5 @@ app.post('/api/fileanalyse', uploadRateLimiter, uploader.single('upfile'), (req,
 //=================================================
 app.listen(process.env.PORT || 3000, ()=> {
     console.log('Web application started at port ' + (process.env.PORT || 3000));
+    console.log('Mode: ' + process.env.NODE_ENV);
 });
